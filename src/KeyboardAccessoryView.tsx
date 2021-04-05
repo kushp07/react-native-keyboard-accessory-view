@@ -14,7 +14,6 @@ import {
   useKeyboardDimensions,
   usePanResponder,
 } from './hooks'
-import styles from './styles'
 
 interface Props {
   children?: React.ReactNode
@@ -63,13 +62,6 @@ export const KeyboardAccessoryView = React.memo(
         ? (contentOffsetKeyboardOpened ?? 0) - bottom
         : contentOffsetKeyboardClosed ?? 0)
 
-    const { container, contentContainer } = styles({
-      bottom,
-      keyboardHeight,
-      left,
-      right,
-    })
-
     return (
       <>
         <Animated.View
@@ -89,7 +81,6 @@ export const KeyboardAccessoryView = React.memo(
                 deltaY
               ),
             },
-            container,
             style,
           ])}
           testID='container'
@@ -98,7 +89,6 @@ export const KeyboardAccessoryView = React.memo(
           <View
             onLayout={onLayout}
             style={StyleSheet.flatten([
-              contentContainer,
               contentContainerStyle,
             ])}
           >
